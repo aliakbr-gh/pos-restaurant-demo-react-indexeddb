@@ -1,13 +1,14 @@
 import { useMemo, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../data/db";
+import { FileText } from "lucide-react";
 
 const fieldDefaults = (fields) =>
   Object.fromEntries(
     fields.map((field) => [field.key, field.type === "checkbox" ? true : ""])
   );
 
-export default function CrudModule({ config, lang }) {
+export default function CrudModule({ config, lang, onReport }) {
   const rows = useLiveQuery(
     () => db.table(config.table).toArray(),
     [config.table],
@@ -118,6 +119,17 @@ export default function CrudModule({ config, lang }) {
                     </td>
                   ))}
                   <td className="actions">
+                    {onReport && (
+                      <button
+                        className="report-icon"
+                        title={
+                          lang === "ur" ? "گاہک کی رپورٹ" : "Customer statement"
+                        }
+                        onClick={() => onReport(row)}
+                      >
+                        <FileText size={15} />
+                      </button>
+                    )}
                     <button onClick={() => openEdit(row)}>✎</button>
                     <button
                       className="danger-icon"

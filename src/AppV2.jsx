@@ -24,6 +24,7 @@ import PosScreenV2 from "./pages/PosScreenV3";
 import Reports from "./pages/ReportsV2";
 import Orders from "./pages/Orders";
 import LiveTables from "./pages/LiveTables";
+import CreditCustomers from "./pages/CreditCustomers";
 import { getT } from "./i18n";
 import { todayLabel } from "./lib/format";
 
@@ -205,6 +206,8 @@ export default function AppV2() {
             <Orders lang={lang} notify={notify} />
           ) : page === "tableView" ? (
             <LiveTables lang={lang} onOpenTable={openTable} />
+          ) : page === "customers" ? (
+            <CreditCustomers lang={lang} />
           ) : (
             <CrudModule config={modules[page]} lang={lang} />
           )}

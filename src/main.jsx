@@ -4,6 +4,7 @@ import './index.css'
 import './unit-ui.css'
 import './food-loader.css'
 import './mobile-fixes.css'
+import './customer-statement.css'
 import App from './AppV2.jsx'
 
 createRoot(document.getElementById('root')).render(
